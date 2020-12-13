@@ -1,4 +1,4 @@
-import { climbStairs, maxProfit, maxSubArray } from "./dynamic";
+import { climbStairs, maxProfit, maxSubArray, rob } from "./dynamic";
 
 describe("climbStairs", () => {
   it("works for one stair", () => {
@@ -44,5 +44,28 @@ describe("maxSubArray", () => {
 
   it("works for single negative value", () => {
     expect(maxSubArray([-10])).toEqual(-10);
+  });
+
+  it("works for bigger arrays", () => {
+    const length = 10 ** 4;
+    expect(maxSubArray(Array(length).fill(1))).toEqual(length);
+  });
+});
+
+describe("rob", () => {
+  it("works for no houses", () => {
+    expect(rob([])).toEqual(0);
+  });
+
+  it("works for one house", () => {
+    expect(rob([10])).toEqual(10);
+  });
+
+  it("works for two houses", () => {
+    expect(rob([5, 10])).toEqual(10);
+  });
+
+  it("works for tricky cases", () => {
+    expect(rob([10, 15, 10])).toEqual(20);
   });
 });

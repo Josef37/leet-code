@@ -40,4 +40,15 @@ function maxSubArray(nums: number[]): number {
   return Math.max(maxInside, maxBorder);
 }
 
-export { climbStairs, maxProfit, maxSubArray };
+function rob(nums: number[]): number {
+  let withLastMax = 0;
+  let withoutLastMax = 0;
+  for (const num of nums) {
+    const temp = withoutLastMax + num;
+    withoutLastMax = Math.max(withLastMax, withoutLastMax);
+    withLastMax = temp;
+  }
+  return Math.max(withoutLastMax, withLastMax);
+}
+
+export { climbStairs, maxProfit, maxSubArray, rob };
